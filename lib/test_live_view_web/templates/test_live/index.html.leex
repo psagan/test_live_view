@@ -1,0 +1,21 @@
+<div class="flex">
+  <span class="rounded-md shadow-sm">
+    <button phx-click="open-modal" phx-value-id="modal-one" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
+      Open modal one
+    </button>
+  </span>
+  <span class="ml-4 rounded-md shadow-sm">
+    <button phx-click="open-modal" phx-value-id="modal-two" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
+      Open modal two
+    </button>
+  </span>
+</div>
+
+
+<%= live_component @socket, TestLiveViewWeb.Common.Modal, id: "modal-one" do %>
+  Modal one - we can put here working nested LV component eg: form
+<% end %>
+
+<%= live_component @socket, TestLiveViewWeb.Common.Modal, id: "modal-two" do %>
+  Modal two  - we can put here working nested LV component eg: form
+<% end %>

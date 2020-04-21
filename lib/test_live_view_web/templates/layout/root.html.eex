@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Know-how base for developers. Allows you to store any dev-related data in developer's friendly way. Tag, categorized code parts, error solutions, bash scripts, ideas.">
+    <meta name="author" content="know.dev">
+
+    <title>Knowledge base for developers</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
+        <style>
+            .max-h-64 {
+                max-height: 16rem;
+            }
+            /*Quick overrides of the form input as using the CDN version*/
+            .form-input,
+            .form-textarea,
+            .form-select,
+            .form-multiselect {
+                background-color: #edf2f7;
+            }
+        </style>
+  </head>
+
+
+    <body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
+        <%= @inner_content %>
+
+        <%= csrf_meta_tag() %>
+        <script src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    </body>
+</html>

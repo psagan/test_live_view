@@ -1,0 +1,35 @@
+# https://pspdfkit.com/blog/2018/how-to-run-your-phoenix-application-with-docker/
+# Version of docker-compose
+version: '3'
+
+# Containers we are going to run
+services:
+  # Our Phoenix container
+  phoenix:
+    # The build parameters for this container.
+    build:
+      # Here we define that it should build from the current directory
+      context: .
+    volumes:
+      - .:/app   
+    ports:
+      # Mapping the port to make the Phoenix app accessible outside of the container
+      - "8000:8000"
+
+#   db:
+#     # We use the predefined Postgres image
+#     image: postgres:9.6
+#     environment:
+#       # Set user/password for Postgres
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgres
+#       # Set a path where Postgres should store the data
+#       PGDATA: /var/lib/postgresql/data/pgdata
+#     restart: always
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+# # Define the volumes
+# volumes:
+#   pgdata:
+
+  
