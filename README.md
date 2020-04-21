@@ -1,19 +1,17 @@
-# TestLiveView
+# Test
 
-To start your Phoenix server:
+```
+docker-compose up #exposed port is 8000, so http://localhost:8000/app
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+```
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+go to http://localhost:8000/app
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+this is based on working version of LV (0.10.0)
 
-## Learn more
+please change version in mix.exs to something newer eg: (0.11.0) and 
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+```
+docker-compose restart
+```
+go to http://localhost:8000/app
