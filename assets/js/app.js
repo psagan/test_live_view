@@ -10,6 +10,7 @@ import css from "../css/app.css"
 // Import dependencies
 //
 import "phoenix_html"
+import './alpine'
 
 // Import local files
 //
@@ -45,9 +46,35 @@ let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks, params: {_csrf_t
 // connect if there are any LiveViews on the page
 liveSocket.connect()
 
+let alpineStarted = false;
+let componentFactory = Alpine.component;
+
+window.deferLoadingAlpine = function () {
+  document.addEventListener("phx:update", function () {
+    if (!alpineStarted) {
+      alpineStarted = true;
+      Alpine.discoverUninitializedComponents((el) => {
+        Alpine.initializeComponent(el);
+      });
+    } else {
+      Alpine.discoverComponents((el) => {
+        if (el.__x) {
+          let data = el.__x.getUnobservedData();
+          let component = new componentFactory(el, data, true);
+          el.__x = component;
+        } else {
+          Alpine.initializeComponent(el);
+        }
+      });
+    }
+  });
+};
+
 // expose liveSocket on window for web console debug logs and latency simulation:
 // >> liveSocket.enableDebug()
 // >> liveSocket.enableLatencySim(1000)
-window.liveSocket = liveSocket
+window.liveSocket = liveSocket;
 
-import "alpinejs"
+window.deferLoadingAlpine(function () {
+  window.Alpine.start();
+});
