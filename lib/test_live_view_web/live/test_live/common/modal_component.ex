@@ -6,6 +6,6 @@ defmodule TestLiveViewWeb.Common.Modal do
   end
 
   def mount(socket) do
-    {:ok, assign(socket, state: "CLOSED", action: nil, connected: connected?(socket))}
+    {:ok, assign(socket, state: "OPEN", action: nil, connected: connected?(socket))}
   end
 end

@@ -1705,7 +1705,7 @@
       this.showDirectiveLastElement;
       var initReturnedCallback; // If x-init is present AND we aren't cloning (skip x-init on clone)
 
-      if (initExpression && !seedDataForCloning) {
+      if (initExpression && (reInitialize || !seedDataForCloning)) {
         // We want to allow data manipulation, but not trigger DOM updates just yet.
         // We haven't even initialized the elements with their Alpine bindings. I mean c'mon.
         this.pauseReactivity = true;
@@ -1714,7 +1714,8 @@
           initExpression
         );
         this.pauseReactivity = false;
-      } // Register all our listeners and set all our attribute bindings.
+      }
+      // Register all our listeners and set all our attribute bindings.
 
       this.initializeElements(this.$el);
       // Use mutation observer to detect new elements being added within this component at run-time.
